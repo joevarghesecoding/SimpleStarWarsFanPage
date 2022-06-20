@@ -1,0 +1,94 @@
+/* What Helped me:
+Overriding Bootstrap: https://blog.hubspot.com/website/how-to-override-bootstrap-css
+Crawl text animation: https://css-tricks.com/snippets/css/star-wars-crawl-text/
+Font border effect: https://stackoverflow.com/questions/2570972/css-font-border
+Upload and use fonts: https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face
+*/
+
+
+@font-face {
+    font-family: 'Star Jedi';
+    src: url(./star-jedi_[allfont.net].ttf);
+    }
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-image: url('https://img.wallpapersafari.com/desktop/1920/1080/78/98/5R2EL3.jpg');
+}
+
+.crawl-text {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: gold;
+    
+}
+
+.title {
+    -webkit-text-stroke: 2px yellow; /* width and color */
+
+    font-family: 'Star Jedi' !important;
+    color: black;
+}
+
+.parent {
+    width: 100%;
+    height: 100vh;
+    /* flow outside of viewable space */
+    overflow: hidden; 
+
+}
+
+.star-wars{
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    /* This sets allows us to transform the text on a 3D plane, and is somewhat a magic number */
+    perspective: 200px;
+    font-size: 300%;
+    font-weight: 600;
+    letter-spacing: 6px;
+    line-height: 150%;
+    text-align: justify;
+}
+
+.crawl {
+    position: relative;
+    width: 50%;
+    /* Making sure the text is fully off the screen at the start and end of the animation */
+    top: -9999px;
+    /* Defines the skew origin at the very center when we apply transforms on the animation */
+    transform-origin: 50% 100%;
+
+    animation: crawl 240s linear;
+}
+
+@keyframes crawl {
+    0% {
+        top: 0;
+        transform: rotateX(20deg) translateZ(0px);
+    }
+
+    100% {
+        top: -6000px;
+        transform: rotateX(25deg) translateZ(-2500px);
+    }
+}
+
+.fade {
+    position: relative;
+    width: 100%;
+    min-height: 20vh;
+    top: -25px;
+    background-image: linear-gradient(0deg, transparent, black 75%);
+    z-index: 1;
+}
+
+button {
+    background-color: black;
+    border: 1px solid gold;
+    color: gold;
+    font-size: 25px;
+}
